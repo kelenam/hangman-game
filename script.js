@@ -8,7 +8,7 @@ const answer = document.getElementById('answer');
 
 const figureParts = document.querySelectorAll('.figure-part');
 
-let selectedWord = "";
+let selectedWord = '';
 const correctLetters = [];
 const wrongLetters = [];
  
@@ -31,12 +31,11 @@ function displayWord() {
             .join("")}
     `;
 
-    console.log(selectedWord);
-
     const innerWord = wordEl.innerText.replace(/\n/g, ""); 
 
     if (innerWord === selectedWord) {
         finalMessage.innerText = "Congratulations! You Won! 🎉";
+        answer.innerText = '';
         popup.style.display = 'flex';
     }
 }
@@ -51,10 +50,6 @@ function updateWrongLettersEl() {
     // Display Parts 
     figureParts.forEach((part, index) => {
         const errors = wrongLetters.length;
-        console.log("wrong letters", wrongLetters);
-        console.log("index:", index);
-        console.log("errors", errors);
-        // console.log(figureParts);
 
         if (index < errors) {
             part.style.display = 'block';
@@ -80,15 +75,15 @@ function showNotification() {
 }
 
 function restartGame() {
-   // Empty Arrays
-   correctLetters.splice(0);
-   wrongLetters.splice(0);
+    // Empty Arrays
+    correctLetters.splice(0);
+    wrongLetters.splice(0);
 
-   selectedWord = getWord();
+    selectedWord = getWord();
 
-   updateWrongLettersEl();
+    updateWrongLettersEl();
 
-   popup.style.display = 'none';
+    popup.style.display = 'none';
 }
 
 window.addEventListener('keydown', e => {
@@ -120,10 +115,9 @@ window.addEventListener('keydown', e => {
     }   
 });
 
-// Restart gamne and play again 
+// Restart game and play again 
 playAgainBtn.addEventListener('click', restartGame);
-
-  
+// Initialize game with word 
 window.addEventListener('load', getWord);
 
   
